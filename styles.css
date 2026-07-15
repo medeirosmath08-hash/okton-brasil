@@ -187,7 +187,30 @@ img { max-width: 100%; display: block; }
 .about-copy h2 { font-size: clamp(3.4rem, 5.4vw, 5.9rem); }
 .about-copy > p:not(.eyebrow) { max-width: 640px; color: #9b9ba2; font-size: .82rem; }
 .about blockquote { max-width: 630px; margin: 1.8rem 0 0; padding: 1.25rem 0 1.25rem 1.2rem; border-left: 3px solid var(--red); color: #e0e0e4; font: 700 1.15rem/1.35 var(--display); }
-.founders { margin-top: 2.2rem; …659 tokens truncated…: 1rem; display: grid; grid-template-columns: 42px 1fr 24px; align-items: center; gap: .8rem; border: 1px solid rgba(255,255,255,.4); background: rgba(0,0,0,.18); color: var(--white); text-decoration: none; backdrop-filter: blur(8px); transition: transform .2s, background .2s; }
+.founders { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: .8rem; }
+.founders article { min-width: 230px; padding: .75rem; display: flex; align-items: center; gap: .8rem; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
+.founders article > span { width: 42px; height: 42px; display: grid; place-items: center; background: var(--red); color: var(--white); font: 900 .9rem var(--display); clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); }
+.founders strong, .founders small { display: block; }
+.founders strong { font: 800 .95rem var(--display); text-transform: uppercase; }
+.founders small { color: var(--red-bright); font-size: .46rem; font-weight: 900; letter-spacing: .13em; }
+
+.client-section { display: grid; grid-template-columns: 1.3fr .7fr; gap: 5rem; align-items: center; background: var(--paper); color: var(--black); }
+.client-copy { max-width: 880px; }
+.client-copy h2 { font-size: clamp(3.4rem, 5.6vw, 6rem); }
+.client-copy > p:not(.eyebrow) { max-width: 640px; color: var(--dark-muted); font-size: .8rem; }
+.client-mark { min-height: 340px; padding: 2.3rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid var(--dark-line); background: var(--white); box-shadow: 0 25px 60px rgba(0,0,0,.08); }
+.client-mark > span { color: var(--red); font-size: .52rem; font-weight: 900; letter-spacing: .15em; }
+.client-mark strong { margin: .7rem 0; color: var(--black); font: 900 clamp(6rem, 10vw, 10rem)/.72 var(--display); letter-spacing: -.08em; }
+.client-mark small { color: #8b8b90; font-size: .48rem; font-weight: 800; letter-spacing: .12em; }
+
+.presentation { background: var(--paper); padding-top: 0; color: var(--black); }
+.presentation-card { position: relative; overflow: hidden; min-height: 370px; padding: clamp(2rem, 5vw, 5rem); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4rem; background: linear-gradient(135deg, var(--red), var(--red-dark)); color: var(--white); }
+.presentation-card::after { content: "OKTON"; position: absolute; right: -2rem; bottom: -2.1rem; color: rgba(255,255,255,.07); font: 900 clamp(7rem, 16vw, 15rem)/.7 var(--display); letter-spacing: -.06em; pointer-events: none; }
+.presentation-card > div { position: relative; z-index: 2; }
+.presentation-card .eyebrow { color: #ffd7da; }
+.presentation-card h2 { max-width: 750px; margin: 0; font: 900 clamp(3.1rem, 5vw, 5.4rem)/.82 var(--display); text-transform: uppercase; letter-spacing: -.04em; }
+.presentation-card p:not(.eyebrow) { max-width: 610px; font-size: .78rem; }
+.download-button { position: relative; z-index: 3; min-width: 330px; padding: 1rem; display: grid; grid-template-columns: 42px 1fr 24px; align-items: center; gap: .8rem; border: 1px solid rgba(255,255,255,.4); background: rgba(0,0,0,.18); color: var(--white); text-decoration: none; backdrop-filter: blur(8px); transition: transform .2s, background .2s; }
 .download-button:hover { transform: translateY(-3px); background: var(--black); }
 .download-button > span { width: 40px; height: 48px; display: grid; place-items: center; background: var(--white); color: var(--red); font: 900 .72rem var(--display); }
 .download-button strong, .download-button small { display: block; }
