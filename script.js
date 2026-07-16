@@ -5,7 +5,10 @@ const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#menu-principal');
 const tabs = [...document.querySelectorAll('.product-tab')];
 const panels = [...document.querySelectorAll('.screen-panel')];
-const gallery = document.querySelector('.system-gallery');
+const galleries = [...document.querySelectorAll('[data-experience-gallery]')];
+const viewToggle = document.querySelector('[data-view-toggle]');
+const viewLabels = [...document.querySelectorAll('[data-view-label]')];
+const experienceDescription = document.querySelector('#experience-description');
 
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
 updateHeader();
@@ -34,7 +37,33 @@ tabs.forEach((tab) => tab.addEventListener('click', () => {
   panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.screen === target));
 }));
 
+const activeGallery = () => galleries.find((item) => item.classList.contains('is-active'));
+
+const setExperienceView = (view) => {
+  const studentView = view === 'aluno';
+  viewToggle?.setAttribute('aria-checked', String(studentView));
+  viewToggle?.classList.toggle('is-student', studentView);
+  viewLabels.forEach((label) => label.classList.toggle('is-active', label.dataset.viewLabel === view));
+  galleries.forEach((gallery) => {
+    const active = gallery.dataset.experienceGallery === view;
+    gallery.classList.toggle('is-active', active);
+    gallery.setAttribute('aria-hidden', String(!active));
+    gallery.setAttribute('tabindex', active ? '0' : '-1');
+    if (active) gallery.scrollLeft = 0;
+  });
+  if (experienceDescription) {
+    experienceDescription.textContent = studentView
+      ? 'Estas telas mostram a experiência do aluno em um ambiente demonstrativo. Dados pessoais, fotos e identificadores foram substituídos para proteger todos os envolvidos.'
+      : 'Estas telas mostram a visão do mestre em um ambiente demonstrativo. Todos os nomes, números, fotos e identificadores foram substituídos para proteger a academia cliente.';
+  }
+};
+
+viewToggle?.addEventListener('click', () => {
+  setExperienceView(viewToggle.getAttribute('aria-checked') === 'true' ? 'mestre' : 'aluno');
+});
+
 document.querySelectorAll('[data-gallery]').forEach((button) => button.addEventListener('click', () => {
+  const gallery = activeGallery();
   if (!gallery) return;
   const card = gallery.querySelector('.system-shot');
   const gap = Number.parseFloat(getComputedStyle(gallery).columnGap || '0');

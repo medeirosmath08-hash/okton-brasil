@@ -19,14 +19,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260715-3" />
+    <link rel="stylesheet" href="styles.css?v=20260716-1" />
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
     <header class="site-header" id="topo">
       <a class="brand brand-official" href="#inicio" aria-label="OKTON, início">
-        <img src="assets/brand/logo-oficial-okton.webp" alt="OKTON — Gestão e crescimento de academias" />
+        <img src="assets/brand/logo-oficial-okton-transparent.png?v=20260716-1" alt="OKTON — Gestão e crescimento de academias" />
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
@@ -180,7 +180,12 @@
             <h2>Veja a OKTON<br /><em>em campo.</em></h2>
           </div>
           <div class="product-proof-copy">
-            <p>Estas telas mostram a experiência real da plataforma em um ambiente demonstrativo. Todos os nomes, números, fotos e identificadores foram substituídos para proteger a academia cliente.</p>
+            <p id="experience-description">Estas telas mostram a visão do mestre em um ambiente demonstrativo. Todos os nomes, números, fotos e identificadores foram substituídos para proteger a academia cliente.</p>
+            <div class="experience-switch" aria-label="Alternar experiência demonstrada">
+              <span class="is-active" data-view-label="mestre">Visão do mestre</span>
+              <button class="view-toggle" type="button" role="switch" aria-checked="false" aria-labelledby="view-toggle-label" data-view-toggle><i></i><span class="sr-only" id="view-toggle-label">Alternar entre visão do mestre e visão do aluno</span></button>
+              <span data-view-label="aluno">Visão do aluno</span>
+            </div>
             <div class="gallery-controls" aria-label="Navegação das telas">
               <button type="button" data-gallery="prev" aria-label="Ver tela anterior">←</button>
               <button type="button" data-gallery="next" aria-label="Ver próxima tela">→</button>
@@ -188,7 +193,7 @@
           </div>
         </div>
 
-        <div class="system-gallery reveal" tabindex="0" aria-label="Telas demonstrativas da plataforma OKTON">
+        <div class="system-gallery reveal is-active" tabindex="0" aria-label="Telas demonstrativas da visão do mestre" data-experience-gallery="mestre">
           <figure class="system-shot">
             <div class="phone-frame"><img src="assets/system/dashboard-demo.webp?v=20260715-4" alt="Dashboard demonstrativo da OKTON com indicadores de alunos, receitas e crescimento" loading="lazy" /></div>
             <figcaption><span>01 / COMANDO</span><strong>Dashboard da academia</strong><small>Indicadores importantes em uma visão direta.</small></figcaption>
@@ -204,6 +209,25 @@
           <figure class="system-shot">
             <div class="phone-frame"><img src="assets/system/agenda-demo.webp?v=20260715-4" alt="Agenda demonstrativa de treinos e eventos da academia" loading="lazy" /></div>
             <figcaption><span>04 / ROTINA</span><strong>Agenda mestra</strong><small>Aulas, eventos e combates no mesmo fluxo.</small></figcaption>
+          </figure>
+        </div>
+
+        <div class="system-gallery student-gallery" tabindex="-1" aria-hidden="true" aria-label="Telas demonstrativas da visão do aluno" data-experience-gallery="aluno">
+          <figure class="system-shot">
+            <div class="phone-frame"><img src="assets/student/home-demo.webp?v=20260716-1" alt="Visão demonstrativa do aluno com evolução por modalidade e frequência" loading="lazy" /></div>
+            <figcaption><span>01 / EVOLUÇÃO</span><strong>Minha jornada</strong><small>Treinos, níveis e horas por modalidade em uma visão motivadora.</small></figcaption>
+          </figure>
+          <figure class="system-shot">
+            <div class="phone-frame"><img src="assets/student/treinos-demo.webp?v=20260716-1" alt="Agenda demonstrativa de treinos disponíveis para o aluno" loading="lazy" /></div>
+            <figcaption><span>02 / ROTINA</span><strong>Treinos e presença</strong><small>Agenda clara para confirmar presença e manter a constância.</small></figcaption>
+          </figure>
+          <figure class="system-shot">
+            <div class="phone-frame"><img src="assets/student/ranking-aluno-demo.webp?v=20260716-1" alt="Ranking local demonstrativo da experiência do aluno" loading="lazy" /></div>
+            <figcaption><span>03 / ENGAJAMENTO</span><strong>Ranking local</strong><small>Reconhecimento da frequência e competição saudável entre atletas.</small></figcaption>
+          </figure>
+          <figure class="system-shot">
+            <div class="phone-frame"><img src="assets/student/store-demo.webp?v=20260716-1" alt="Fight Store demonstrativa com produtos da academia" loading="lazy" /></div>
+            <figcaption><span>04 / COMUNIDADE</span><strong>Fight Store</strong><small>Produtos da academia e da rede OKTON dentro da experiência do aluno.</small></figcaption>
           </figure>
         </div>
       </section>
@@ -259,7 +283,23 @@
           <h2>Construído perto de quem vive a rotina da academia.</h2>
           <p>A evolução da OKTON acontece em contato com operações reais, desafios reais e pessoas que acreditam em uma gestão mais inteligente.</p>
         </div>
-        <div class="client-mark reveal" aria-label="Cliente GTT"><span>CLIENTE</span><strong>GTT</strong><small>PARCEIRO EM EVOLUÇÃO</small></div>
+        <div class="client-mark reveal" aria-label="Cliente GTT"><span>CLIENTE</span><img src="assets/clientes/gtt.png?v=20260716-1" alt="GTT — Guaíba Top Team" loading="lazy" /><small>PARCEIRO EM EVOLUÇÃO</small></div>
+      </section>
+
+      <section class="testimonial section" id="depoimento">
+        <div class="testimonial-copy reveal">
+          <p class="eyebrow"><span></span> QUEM VIVE A ROTINA CONTA</p>
+          <h2>A transformação aparece<br /><em>na voz do cliente.</em></h2>
+          <p>Nosso primeiro cliente compartilha como a OKTON entrou na operação da academia e começou a transformar gestão, acompanhamento e experiência dos alunos.</p>
+          <div class="testimonial-client"><img src="assets/clientes/gtt.png?v=20260716-1" alt="GTT — Guaíba Top Team" /><div><strong>GTT</strong><span>Cliente pioneiro OKTON</span></div></div>
+        </div>
+        <div class="testimonial-media reveal">
+          <video controls preload="metadata" playsinline poster="assets/video/depoimento-cliente-okton-poster.png?v=20260716-1" aria-label="Depoimento em vídeo do primeiro cliente da OKTON">
+            <source src="assets/video/depoimento-cliente-okton.webm?v=20260716-1" type="video/webm" />
+            Seu navegador não consegue reproduzir este vídeo.
+          </video>
+          <div><span>DEPOIMENTO REAL</span><strong>Gestão vista de dentro do tatame.</strong></div>
+        </div>
       </section>
 
       <section class="presentation section">
@@ -333,13 +373,13 @@
     </main>
 
     <footer>
-      <a class="brand brand-official" href="#inicio" aria-label="OKTON, voltar ao início"><img src="assets/brand/logo-oficial-okton.webp" alt="OKTON — Gestão e crescimento de academias" /></a>
+      <a class="brand brand-official" href="#inicio" aria-label="OKTON, voltar ao início"><img src="assets/brand/logo-oficial-okton-transparent.png?v=20260716-1" alt="OKTON — Gestão e crescimento de academias" /></a>
       <div class="footer-center"><p>© <span id="year"></span> OKTON. Todos os direitos reservados.</p><a href="privacy.html">Política de privacidade</a></div>
       <div class="footer-links"><a href="mailto:okton.oficial@gmail.com">okton.oficial@gmail.com</a><a href="https://www.instagram.com/oktonbrasil/" target="_blank" rel="noopener noreferrer">@oktonbrasil</a></div>
     </footer>
 
     <a class="whatsapp-float" href="https://wa.me/5551995645315?text=Ol%C3%A1%21%20Conheci%20a%20OKTON%20pelo%20site%20e%20quero%20entender%20como%20a%20plataforma%20pode%20ajudar%20minha%20academia.%20Podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" aria-label="Falar com a OKTON pelo WhatsApp" data-track="whatsapp-flutuante"><span>WA</span><b>FALAR COM A OKTON</b></a>
 
-    <script src="script.js?v=20260715-3"></script>
+    <script src="script.js?v=20260716-1"></script>
   </body>
 </html>
