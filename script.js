@@ -79,6 +79,27 @@ document.querySelectorAll('details').forEach((detail) => detail.addEventListener
 }));
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const heroMotion = document.querySelector('[data-hero-motion]');
+
+if (heroMotion && !reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+  heroMotion.addEventListener('pointermove', (event) => {
+    const bounds = heroMotion.getBoundingClientRect();
+    const x = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
+    const y = Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height));
+    heroMotion.style.setProperty('--rx', `${(0.5 - y) * 5}deg`);
+    heroMotion.style.setProperty('--ry', `${(x - 0.5) * 7}deg`);
+    heroMotion.style.setProperty('--gx', `${x * 100}%`);
+    heroMotion.style.setProperty('--gy', `${y * 100}%`);
+  });
+
+  heroMotion.addEventListener('pointerleave', () => {
+    heroMotion.style.setProperty('--rx', '0deg');
+    heroMotion.style.setProperty('--ry', '0deg');
+    heroMotion.style.setProperty('--gx', '50%');
+    heroMotion.style.setProperty('--gy', '50%');
+  });
+}
+
 if (!reducedMotion && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -99,3 +120,4 @@ document.querySelectorAll('[data-track]').forEach((link) => link.addEventListene
 
 const year = document.querySelector('#year');
 if (year) year.textContent = String(new Date().getFullYear());
+
