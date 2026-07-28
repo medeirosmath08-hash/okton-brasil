@@ -19,8 +19,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body { margin: 0; background: var(--black); color: var(--white); font-family: var(--body); line-height: 1.55; overflow-x: hidden; }
+html { max-width: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+body { width: 100%; max-width: 100%; margin: 0; background: var(--black); color: var(--white); font-family: var(--body); line-height: 1.55; overflow-x: hidden; }
 body.menu-open { overflow: hidden; }
 a, button { -webkit-tap-highlight-color: transparent; }
 button, input { font: inherit; }
@@ -186,14 +186,7 @@ img { max-width: 100%; display: block; }
 .about-copy { padding: clamp(6rem, 10vw, 10rem) var(--page) clamp(5rem, 8vw, 8rem) clamp(2rem, 5vw, 5.5rem); display: flex; flex-direction: column; justify-content: center; }
 .about-copy h2 { font-size: clamp(3.4rem, 5.4vw, 5.9rem); }
 .about-copy > p:not(.eyebrow) { max-width: 640px; color: #9b9ba2; font-size: .82rem; }
-.about blockquote { max-width: 630px; margin: 1.8rem 0 0; padding: 1.25rem 0 1.25rem 1.2rem; border-left: 3px solid var(--red); color: #e0e0e4; font: 700 1.15rem/1.35 var(--display); }
-.founders { margin-top: 2.2rem; …4499 tokens truncated…--black);
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: color .2s, background .2s, border-color .2s;
-}
-.gallery-controls button:hover,
-.gallery-controls button:focus-visible { border-color: var(--red); background: var(--red); color: var(--white); }
+.about blockquote { max-width: 630px; margin: 1.8rem 0 0; padding: 1.25rem 0 1.25rem 1.2rem; border-left: 3px solid var(--red); color: #e0e0e4; font: …4559 tokens truncated…isible { border-color: var(--red); background: var(--red); color: var(--white); }
 .system-gallery {
   width: calc(100% + var(--page));
   margin-top: clamp(3rem, 6vw, 5.5rem);
@@ -643,7 +636,10 @@ img { max-width: 100%; display: block; }
   .okton-core-stage { min-height: 445px; }
 }
 @media (max-width: 820px) {
-  .hero-system { width: min(620px,100%); min-height: 560px; }
+  .hero { width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); }
+  .hero-content,
+  .hero-system { width: 100%; min-width: 0; max-width: 100%; }
+  .hero-system { min-height: 560px; margin-inline: 0; justify-self: stretch; }
   .okton-core-stage { min-height: 440px; }
 }
 @media (max-width: 520px) {
