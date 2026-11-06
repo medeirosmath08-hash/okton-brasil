@@ -115,7 +115,9 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 
 document.querySelectorAll('[data-track]').forEach((link) => link.addEventListener('click', () => {
   const event = link.dataset.track;
-  if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: 'okton_click', element: event });
+  if (window.oktonAnalyticsAllowed === true && Array.isArray(window.dataLayer)) {
+    window.dataLayer.push({ event: 'okton_click', element: event });
+  }
 }));
 
 const year = document.querySelector('#year');
