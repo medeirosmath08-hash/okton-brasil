@@ -42,6 +42,7 @@
   };
 
   const choice = readChoice();
+  window.oktonAnalyticsAllowed = choice === 'accepted';
   if (choice === 'accepted') loadTagManager();
 
   const banner = document.createElement('aside');
@@ -66,6 +67,7 @@
 
   banner.querySelector('[data-consent-accept]').addEventListener('click', () => {
     saveChoice('accepted');
+    window.oktonAnalyticsAllowed = true;
     hideBanner();
     loadTagManager();
   });
@@ -73,6 +75,7 @@
   banner.querySelector('[data-consent-reject]').addEventListener('click', () => {
     const wasLoaded = Boolean(document.querySelector('[data-okton-tag-manager]'));
     saveChoice('rejected');
+    window.oktonAnalyticsAllowed = false;
     hideBanner();
     if (wasLoaded) {
       removeAnalyticsCookies();
